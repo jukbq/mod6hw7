@@ -1,0 +1,51 @@
+<section>
+
+    <div class="left_block">
+        <button type="button" class="btn btn-dark">Blog</button>
+    </div>
+
+    <!-------------------------------------------------------->
+    <div class="right_block">
+
+        <form>
+            <div class="mb-3">
+                <input type="text" name="postTitel" class="form-control" [(ngModel)]="title" placeholder="Titel here" #postTitel="ngModel" required>
+            </div>
+
+            <div class="mb-3">
+                <textarea name="postText" class="form-control" [(ngModel)]="text" rows="3" placeholder="Text here" #postText="ngModel" required></textarea>
+            </div>
+
+            <div class="mb-3">
+                <input type="text" name="postAuthor" class="form-control" [(ngModel)]="author" placeholder="Author here" #postAuthor="ngModel" required>
+            </div>
+
+            <button (click)="addPOst()" type="button" class="btn btn-dark" [disabled]="this.postTitel.invalid || this.postText.invalid || this.postAuthor.invalid">Add</button>
+        </form>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Titel</th>
+                    <th scope="col">Text</th>
+                    <th scope="col">Author</th>
+                    <th scope="col">Edit</th>
+                    <th scope="col">Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let posts of post">
+                    <th>{{ posts.id }}</th>
+                    <td>{{ posts.title }}</td>
+                    <td>{{ posts.text }}</td>
+                    <td>{{ posts.author }}</td>
+                    <td> <button type="button" class="btn btn-dark">Edit</button></td>
+                    <td> <button type="button" class="btn btn-dark">Delete</button></td>
+                </tr>
+
+            </tbody>
+        </table>
+
+    </div>
+</section>
