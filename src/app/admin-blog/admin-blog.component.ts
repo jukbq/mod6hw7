@@ -15,7 +15,7 @@ import { BlogService } from '../shared/services/blog.service';
 export class AdminBlogComponent implements OnInit {
 
   constructor(
-  private bloservice: BlogService
+    private blogservice: BlogService
   ) { }
 
   public post!: BlogResponse[];
@@ -24,39 +24,69 @@ export class AdminBlogComponent implements OnInit {
   public title = '';
   public text = '';
   public author = '';
+  public addButton = false;
+  public editID!: number;
+
 
   ngOnInit(): void {
-
+    this.getPost()
   }
 
-  clear(){
+  getPost(): void {
+    this.blogservice.getAll().subscribe(data => {
+      this.post = data
+    })
+  }
+
+  clear(): void {
     this.title = '';
     this.text = '';
     this.author = '';
 
   }
 
-addPOst(){
-  const new_post = {
-    title: this.title,
-  text: this.text,
-  author: this.author
-   }
-this.bloservice.addPOst(new_post).subscribe(() =>{
-  this.getPost()
-  this.clear()
-  
-})
+  editPost(post: BlogResponse) {
+    this.title = post.title;
+    this.text = post.text;
+    this.author = post.author;
+    this.addButton = true;
+    this.editID = post.id;
+  }
 
-}
-
-
-  getPost(): void {
-    this.bloservice.getAll().subscribe(data => {
-     this.post = data
-   
-      
+  editSave() {
+    const edit_post = {
+      title: this.title,
+      text: this.text,
+      author: this.author
+    }
+    this.blogservice.editPost(edit_post, this.editID).subscribe(() => {
+      this.getPost()
+      this.clear()
+      this.addButton = false
     })
   }
+
+  addPOst() {
+    const new_post = {
+      title: this.title,
+      text: this.text,
+      author: this.author
+    }
+    this.blogservice.addPOst(new_post).subscribe(() => {
+      this.getPost()
+      this.clear()
+      })
+  }
+
+
+
+  delPost(index: BlogResponse) {
+    if (confirm('Are you sure?')) {
+      this.blogservice.delPost(index.id).subscribe(() => {
+        this.getPost()
+      })
+    }
+  }
+
 
 }
