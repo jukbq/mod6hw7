@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { BlogRequest, BlogResponse } from '../interfaces/blog';
+import { BlogRequest, BlogResponse  } from '../interfaces/blog';
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +24,7 @@ export class BlogService {
   };
 
 
+
   addPOst(post: BlogRequest): Observable<BlogResponse> {
     return this.http.post<BlogResponse>(this.api.blogs, post);
   };
@@ -37,6 +38,7 @@ export class BlogService {
     return this.http.delete<void>(`${this.api.blogs}/${id}`);
   };
 
+  
 
 }
 

@@ -1,1 +1,15 @@
-<p>blog works!</p>
+<section>
+    <div *ngFor="let post of post" class="blog">
+
+        <div class="post">
+            <div class="image">
+                <img [src]="post.image">
+            </div>
+
+            <p class="author">{{post.author}}</p>
+            <a class="title" href="">{{post.title}}</a>
+            <p class="text">{{post.text}}</p>
+        </div>
+
+    </div>
+</section>
