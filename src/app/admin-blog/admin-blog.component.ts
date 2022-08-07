@@ -28,7 +28,9 @@ export class AdminBlogComponent implements OnInit {
   public editID!: number;
   public imagNum!: number;
   public numImage = '';
+
   public imgSrc = 'https://funart.pro/uploads/posts/2021-03/1617066508_28-p-oboi-kartinki-na-zastavku-kompyutera-30.jpg'
+
 
   ngOnInit(): void {
     this.getPost()

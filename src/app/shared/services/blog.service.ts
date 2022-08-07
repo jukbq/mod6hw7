@@ -12,7 +12,7 @@ export class BlogService {
   private blog: Array<BlogResponse> = [];
 
 
-  private url = environment.BACKEND_URL;
+  private url: any = 'https://spectacled-numerous-son.glitch.me';
   private api = { blogs: `${this.url}/posts` };
 
 
