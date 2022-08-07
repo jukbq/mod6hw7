@@ -29,7 +29,7 @@ export class AdminBlogComponent implements OnInit {
   public imagNum!: number;
   public numImage = '';
 
-  public imgSrc = 'https://funart.pro/uploads/posts/2021-03/1617066508_28-p-oboi-kartinki-na-zastavku-kompyutera-30.jpg'
+  public imgSrc = `/src/app/image/img-${this.imagNum}.jpg`
 
 
   ngOnInit(): void {
