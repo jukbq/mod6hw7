@@ -64,7 +64,7 @@ export class AdminBlogComponent implements OnInit {
 
   editSave() {
     this.imagrNum()
-    const imgSrc = `/assets/image/img-${this.numImage}.jpg`
+    const imgSrc = `./assets/image/img-${this.numImage}.jpg`
         const edit_post = {
       title: this.title,
       text: this.text,
@@ -82,7 +82,7 @@ export class AdminBlogComponent implements OnInit {
 
   addPOst() {
     this.imagrNum()
-    this.imgSrc = `/assets/image/img-${this.numImage}.jpg`
+    this.imgSrc = `./assets/image/img-${this.numImage}.jpg`
     const new_post = {
       title: this.title,
       text: this.text,
