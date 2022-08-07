@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-/*   BACKEND_URLl: 'https://spectacled-numerous-son.glitch.me' */
+  BACKEND_URLl: 'http://https://mod6hw7-db1.herokuapp.com'
 };

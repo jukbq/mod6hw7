@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-/*   BACKEND_URL: 'https://spectacled-numerous-son.glitch.me' */
+  BACKEND_URL: 'http://https://mod6hw7-db1.herokuapp.com'
 };
 
 /*
