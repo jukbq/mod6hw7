@@ -27,21 +27,18 @@ export class AdminBlogComponent implements OnInit {
   public addButton = false;
   public editID!: number;
   public numImage = '';
-  public imgSrc = `/assets/image/img-${this.numImage}.jpg`
 
 
-  ngOnInit(): void {
+
+  ngOnInit(): void { 
+
     this.getPost()
-    this.imagrNum()
-    console.log(this.numImage);
-    console.log(this.imgSrc);
+     console.log(this.numImage);
+
 
   }
 
-  imagrNum() {
-    let num = Math.floor(Math.random() * 10)
-    this.numImage = String(num)
-  }
+
 
   getPost(): void {
     this.blogservice.getAll().subscribe(data => {
@@ -66,11 +63,12 @@ export class AdminBlogComponent implements OnInit {
   }
 
   editSave() {
+    const imgSrc = `/assets/image/img-${this.numImage}.jpg`
     const edit_post = {
       title: this.title,
       text: this.text,
       author: this.author,
-      image: this.imgSrc
+      image: imgSrc
     }
     this.blogservice.editPost(edit_post, this.editID).subscribe(() => {
       this.getPost()
@@ -80,15 +78,18 @@ export class AdminBlogComponent implements OnInit {
   }
 
   addPOst() {
+    this.imagrNum()
+    const imgSrc = `/assets/image/img-${this.numImage}.jpg`
     const new_post = {
       title: this.title,
       text: this.text,
       author: this.author,
-      image: this.imgSrc
+      image: imgSrc
     }
     this.blogservice.addPOst(new_post).subscribe(() => {
       this.getPost()
       this.clear()
+      console.log(imgSrc);
     })
   }
 
@@ -101,6 +102,9 @@ export class AdminBlogComponent implements OnInit {
       })
     }
   }
-
+  imagrNum() {
+    let num = Math.floor(Math.random() * 10)
+    this.numImage = String(num)
+  }
 
 }
