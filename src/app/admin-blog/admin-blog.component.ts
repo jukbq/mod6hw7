@@ -26,19 +26,22 @@ export class AdminBlogComponent implements OnInit {
   public author = '';
   public addButton = false;
   public editID!: number;
-  public imagNum!: number;
   public numImage = '';
-
-  public imgSrc = `/src/app/image/img-${this.imagNum}.jpg`
+  public imgSrc = `/assets/image/img-${this.numImage}.jpg`
 
 
   ngOnInit(): void {
     this.getPost()
     this.imagrNum()
     console.log(this.numImage);
-    
+    console.log(this.imgSrc);
+
   }
 
+  imagrNum() {
+    let num = Math.floor(Math.random() * 10)
+    this.numImage = String(num)
+  }
 
   getPost(): void {
     this.blogservice.getAll().subscribe(data => {
@@ -89,10 +92,7 @@ export class AdminBlogComponent implements OnInit {
     })
   }
 
-  imagrNum() {
-    let num = Math.floor(Math.random() * 10)
-    this.numImage = String(num)
-  }
+
 
   delPost(index: BlogResponse) {
     if (confirm('Are you sure?')) {
