@@ -27,7 +27,7 @@ export class AdminBlogComponent implements OnInit {
   public addButton = false;
   public editID!: number;
   public numImage = '';
-
+  public imgSrc = ''
 
 
   ngOnInit(): void { 
@@ -82,17 +82,17 @@ export class AdminBlogComponent implements OnInit {
 
   addPOst() {
     this.imagrNum()
-    const imgSrc = `/assets/image/img-${this.numImage}.jpg`
+    this.imgSrc = `/assets/image/img-${this.numImage}.jpg`
     const new_post = {
       title: this.title,
       text: this.text,
       author: this.author,
-      image: imgSrc
+      image: this.imgSrc
     }
     this.blogservice.addPOst(new_post).subscribe(() => {
       this.getPost()
       this.clear()
-      console.log(imgSrc);
+      console.log(this.imgSrc);
     })
   }
 
