@@ -63,14 +63,17 @@ export class AdminBlogComponent implements OnInit {
   }
 
   editSave() {
+    this.imagrNum()
     const imgSrc = `/assets/image/img-${this.numImage}.jpg`
-    const edit_post = {
+        const edit_post = {
       title: this.title,
       text: this.text,
       author: this.author,
       image: imgSrc
     }
     this.blogservice.editPost(edit_post, this.editID).subscribe(() => {
+      console.log(imgSrc);
+      
       this.getPost()
       this.clear()
       this.addButton = false
