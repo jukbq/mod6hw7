@@ -12,7 +12,7 @@ export class BlogService {
   private blog: Array<BlogResponse> = [];
 
 
-  private url: any = 'https://spectacled-numerous-son.glitch.me';
+  private url: any = 'https://horn-marsh-peak.glitch.me';
   private api = { blogs: `${this.url}/posts` };
 
 
