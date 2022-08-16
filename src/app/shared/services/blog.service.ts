@@ -12,7 +12,7 @@ export class BlogService {
   private blog: Array<BlogResponse> = [];
 
 
-  private url: any = 'https://mod6hw7-db1.herokuapp.com';
+  private url: any = 'https://angulat-db-jasin.herokuapp.com/';
   private api = { blogs: `${this.url}/posts` };
 
 
